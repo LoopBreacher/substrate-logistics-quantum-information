@@ -13,7 +13,7 @@
 This repository provides open-source quantum open-system simulations implementing the theoretical framework **Substrate Logistics**:
 
 > **Substrate Logistics: The Architecture of Quantum Information**  
-> *Deriving the $1.67 \times 10^{-37}\text{ J}$ Erasure Floor, Master Clock Decoherence, and Active 36° Chiral Phase Compensation*  
+> Deriving the $1.67 \times 10^{-37}\text{ J}$ Erasure Floor, Master Clock Decoherence, and Active 36° Chiral Phase Compensation  
 > **Author:** Marco Lindenbeck ([ORCID: 0009-0003-8413-6027](https://orcid.org/0009-0003-8413-6027)) — `marcolindenbeck@arrowoftime.de`  
 > **Manuscript / Preprint:** Hosted on Zenodo — [DOI: 10.5281/zenodo.21991127](https://doi.org/10.5281/zenodo.21991127)
 
@@ -42,7 +42,7 @@ Standard Quantum Information Science (QIS) treats qubit state vectors as continu
 
 ## 🔬 Theoretical Foundations
 
-### 1. The Substrate Landauer Limit ($E_{\text{min}}$)
+### 1. The Substrate Landauer Limit (E_min)
 Thermodynamic information theory posits $E_{\text{erasure}} = k_B T \ln 2$, which continuously tends to zero as $T \to 0\text{ K}$. Substrate Logistics derives an irreducible quantum erasure energy floor: erasing 1 bit requires snapping one fundamental unit of baseline tension ($E_R = 13.60713\text{ eV}$) attenuated by the Universal Attenuation Tensor ($\mathcal{T}_\Omega = 1.30147 \times 10^{19}$):
 
 $$
@@ -71,24 +71,26 @@ $$
 $$
 
 > **Key Insight for Fault Tolerance:**  
-> The theoretical bare-metal error floor $\epsilon_{\text{floor}} \approx 7.64 \times 10^{-4}$ sits naturally below the standard **$1.0\%$ ($10^{-3}$) fault-tolerance threshold** of 2D surface codes. This explains why superconducting transmons plateau near $99.92\%$ and why surface code error correction is physically achievable.
+> The theoretical bare-metal error floor $\epsilon_{\text{floor}} \approx 7.64 \times 10^{-4}$ sits naturally below the standard **1.0% ($10^{-3}$) fault-tolerance threshold** of 2D surface codes. This explains why superconducting transmons plateau near $99.92\%$ and why surface code error correction is physically achievable.
 
 ---
 
 ### 3. Characteristic Coherence Lifetimes
 
-* **Dephasing Rate:**  
-  $$
-  \gamma_\delta = 2 \cdot \epsilon_{\text{floor}} = 2 \cdot \mathcal{C}_\delta \cdot \phi \approx \mathbf{0.001527424\text{ per cycle}}
-  $$
-* **$1/e$ Coherence Lifetime:**  
-  $$
-  N_{1/e} = \frac{1}{\gamma_\delta} \approx \mathbf{654.70\text{ cycles}} \quad (\approx 655\text{ steps})
-  $$
-* **$1/e^2$ Frame Drop Ceiling:**  
-  $$
-  \mathcal{N}_{\text{max}} = \frac{2}{\gamma_\delta} = \frac{1}{\mathcal{C}_\delta \cdot \phi} \approx \mathbf{1309.39\text{ cycles}} \quad (\approx 1309\text{ steps})
-  $$
+**Dephasing Rate:**
+$$
+\gamma_\delta = 2 \cdot \epsilon_{\text{floor}} = 2 \cdot \mathcal{C}_\delta \cdot \phi \approx \mathbf{0.001527424\text{ per cycle}}
+$$
+
+**1/e Coherence Lifetime:**
+$$
+N_{1/e} = \frac{1}{\gamma_\delta} \approx \mathbf{654.70\text{ cycles}} \quad (\approx 655\text{ steps})
+$$
+
+**1/e² Frame Drop Ceiling:**
+$$
+\mathcal{N}_{\text{max}} = \frac{2}{\gamma_\delta} = \frac{1}{\mathcal{C}_\delta \cdot \phi} \approx \mathbf{1309.39\text{ cycles}} \quad (\approx 1309\text{ steps})
+$$
 
 ---
 
@@ -100,22 +102,26 @@ $$
 $$
 
 where:
-* **Chiral Drift Hamiltonian:**  
-  $$
-  H_{\text{chiral}} = \frac{\theta_{\text{chiral}}}{2} \sigma_z = \frac{\pi}{10}\sigma_z
-  $$
-* **Multi-Channel Jump Operator (5 pentagonal faces, $E_f = 5$):**  
-  $$
-  L_{\delta,\text{total}} = \sqrt{\mathcal{C}_\delta \cdot \phi} \sum_{m=1}^{5} e^{i \cdot m (36^\circ)} \sigma_z^{(m)}
-  $$
-* **Single-Channel Jump Operator:**  
-  $$
-  L_\delta = \sqrt{\mathcal{C}_\delta \cdot \phi}\; e^{i (36^\circ)} \sigma_z
-  $$
-* **Active Counter-Rotation Operator:**  
-  $$
-  R_z(-36^\circ) = \exp\left(+i \frac{\theta_{\text{chiral}}}{2} \sigma_z\right) = \exp\left(+i \frac{\pi}{10} \sigma_z\right)
-  $$
+
+**Chiral Drift Hamiltonian:**
+$$
+H_{\text{chiral}} = \frac{\theta_{\text{chiral}}}{2} \sigma_z = \frac{\pi}{10}\sigma_z
+$$
+
+**Multi-Channel Jump Operator** (5 pentagonal faces, $E_f = 5$):
+$$
+L_{\delta,\text{total}} = \sqrt{\mathcal{C}_\delta \cdot \phi} \sum_{m=1}^{5} e^{i \cdot m (36^\circ)} \sigma_z^{(m)}
+$$
+
+**Single-Channel Jump Operator:**
+$$
+L_\delta = \sqrt{\mathcal{C}_\delta \cdot \phi}\; e^{i (36^\circ)} \sigma_z
+$$
+
+**Active Counter-Rotation Operator:**
+$$
+R_z(-36^\circ) = \exp\left(+i \frac{\theta_{\text{chiral}}}{2} \sigma_z\right) = \exp\left(+i \frac{\pi}{10} \sigma_z\right)
+$$
 
 ---
 
@@ -132,7 +138,7 @@ where:
 
 ## 📊 Simulation 1: Single-Qubit Dephasing & State Fidelity Decay
 
-The script [`dephasing.py`](./dephasing.py) computes the free evolution of a qubit initialized in the maximal superposition state $\vert+\rangle = \frac{\vert0\rangle + \vert1\rangle}{\sqrt{2}}$ under pure metric jump operator $L_\delta$ over $N = 0 \dots 1500$ execution clock cycles.
+The script [`dephasing.py`](./dephasing.py) computes the free evolution of a qubit initialized in the maximal superposition state $|+\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}$ under pure metric jump operator $L_\delta$ over $N = 0 \dots 1500$ execution clock cycles.
 
 ### Telemetry Output
 ```text
@@ -150,7 +156,7 @@ Dephasing Rate (gamma_delta)             : 0.001527 per cycle
 ### Visual Telemetry
 ![Single-Qubit Dephasing](dephasing.png)
 
-*Figure 1: Single-qubit state fidelity evolution under Master Clock sampling noise across $N=1500$ execution cycles, confirming the $\mathcal{F}_{\text{max}} \approx 99.92\%$ ceiling, $N_{1/e} \approx 655$ coherence limit, and $\mathcal{N}_{\text{max}} = 1309$ frame drop threshold.*
+**Figure 1:** Single-qubit state fidelity evolution under Master Clock sampling noise across $N=1500$ execution cycles, confirming the $\mathcal{F}_{\text{max}} \approx 99.92\%$ ceiling, $N_{1/e} \approx 655$ coherence limit, and $\mathcal{N}_{\text{max}} = 1309$ frame drop threshold.
 
 ---
 
@@ -158,7 +164,7 @@ Dephasing Rate (gamma_delta)             : 0.001527 per cycle
 
 The script [`chiral_pulse.py`](./chiral_pulse.py) simulates both uncompensated coherent precession ($H_{\text{chiral}} + L_\delta$) and active step-by-step $R_z(-36^\circ)$ counter-pulse shaping:
 
-1. **Uncompensated Mode:** Precession accumulates $\theta(N) = N \cdot 36^\circ$. At odd multiples of $25$ cycles ($N=25, 75$), accumulated angle is $900^\circ \equiv 180^\circ$ and $2700^\circ \equiv 180^\circ$, driving $\vert+\rangle \to \vert-\rangle$ and collapsing fidelity to $\mathcal{F} = 1.87\%$.
+1. **Uncompensated Mode:** Precession accumulates $\theta(N) = N \cdot 36^\circ$. At odd multiples of $25$ cycles ($N=25, 75$), accumulated angle is $900^\circ \equiv 180^\circ$ and $2700^\circ \equiv 180^\circ$, driving $|+\rangle \to |-\rangle$ and collapsing fidelity to $\mathcal{F} = 1.87\%$.
 2. **Active Compensated Mode:** Control pulses apply $R_z(-36^\circ)$ at every cycle, canceling coherent phase drift and restoring state fidelity to $98.13\%$ at $N=25$ ($52.5\times$ gain).
 
 ### Telemetry Benchmark Comparison Matrix
@@ -177,7 +183,7 @@ The script [`chiral_pulse.py`](./chiral_pulse.py) simulates both uncompensated c
 ### Visual Telemetry
 ![Active Chiral Pulse Shaping Simulation](chiral_pulse.png)
 
-*Figure 2: Active $R_z(-36^\circ)$ Chiral Phase Compensation vs. Uncompensated Drift. Uncompensated evolution (red) crashes at anti-phase nodes ($N=25, 75$), whereas active chiral pulse shaping (green) locks state fidelity to the optimal stochastic dephasing envelope.*
+**Figure 2:** Active $R_z(-36^\circ)$ Chiral Phase Compensation vs. Uncompensated Drift. Uncompensated evolution (red) crashes at anti-phase nodes ($N=25, 75$), whereas active chiral pulse shaping (green) locks state fidelity to the optimal stochastic dephasing envelope.
 
 ---
 
